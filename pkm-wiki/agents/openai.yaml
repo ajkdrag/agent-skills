@@ -1,0 +1,4 @@
+interface:
+  display_name: "PKM Wiki"
+  short_description: "Maintain atomic PKM wiki notes"
+  default_prompt: "Use $pkm-wiki to create or update an atomic wiki note."
