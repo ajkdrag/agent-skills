@@ -269,7 +269,8 @@ div.callout {
   color: var(--deck-ink);
 }
 
-/* the type reads as a slim colored strip, no label text */
+/* an h1 inside the callout becomes the title bar, written per slide in the
+   markdown. Without one, the type reads as a slim colored strip. */
 div.callout::before {
   content: "";
   display: block;
@@ -278,23 +279,51 @@ div.callout::before {
   margin: 0 0 10px 0;
 }
 
-div.callout > p,
-div.callout > ul,
-div.callout > ol {
-  margin: 6px 16px;
+div.callout:has(> h1)::before {
+  display: none;
 }
 
 div.callout > h1 {
+  position: static;
+  display: block;
+  height: auto;
+  width: auto;
+  max-width: none;
+  font-family: var(--deck-mono);
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  background: var(--deck-ink);
+  color: var(--deck-paper);
   border: none;
-  font-size: 20px;
-  margin: 8px 16px 0 16px;
-  padding: 0;
-  color: var(--deck-ink);
+  margin: 0 0 8px 0;
+  padding: 5px 14px;
 }
 
 div.callout > h1::before {
   content: "";
   margin: 0;
+}
+
+/* marpx colors the h1 text per type at higher specificity, force paper */
+div.callout.note > h1, div.callout.tip > h1, div.callout.success > h1,
+div.callout.warning > h1, div.callout.danger > h1, div.callout.bug > h1,
+div.callout.info > h1, div.callout.example > h1, div.callout.quote > h1 {
+  color: var(--deck-paper);
+  background: var(--deck-ink);
+}
+
+div.callout.tip > h1     { background: #1864ab; }
+div.callout.success > h1 { background: #2b8a3e; }
+div.callout.warning > h1 { background: #f08c00; }
+div.callout.danger > h1  { background: #c92a2a; }
+div.callout.bug > h1     { background: #c92a2a; }
+
+div.callout > p,
+div.callout > ul,
+div.callout > ol {
+  margin: 6px 16px;
 }
 
 div.callout.note, div.callout.tip, div.callout.success,

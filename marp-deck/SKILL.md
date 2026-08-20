@@ -93,9 +93,11 @@ Gotchas the starter theme already fixes, keep them if you write your own:
 - Marp's base css sets `section table { display: block }` for scroll
   overflow, which detaches the table border from its cells and leaves
   hairline gaps around the header. Restore `display: table` in the theme.
-- Keep one visual language: no inverted slides mid-deck, callout type shown
-  by a colored strip with no label text (a type word like SUCCESS in the box
-  reads as theme noise), everything else stays on the same ground color.
+- Keep one visual language: no inverted slides mid-deck, everything stays on
+  the same ground color. Callouts get a title bar colored by type, and the
+  bar text is a short contextual title written in the markdown (an h1 inside
+  the div), never the type word itself, SUCCESS as a heading is theme noise.
+  A callout without a title falls back to a slim colored strip.
 
 ## Diagrams
 
