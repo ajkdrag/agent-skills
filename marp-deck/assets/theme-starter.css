@@ -177,13 +177,24 @@ pre code {
 /* ---------- tables ---------- */
 
 section table {
+  /* marp's base css makes tables display:block for overflow scrolling,
+     which detaches the border from the cells, restore a real table box */
+  display: table;
+  width: max-content;
+  max-width: 100%;
   font-size: 20px;
   font-family: var(--deck-sans) !important;
   line-height: 1.35;
   margin: 14px 0;
   border-collapse: collapse;
+  border-spacing: 0;
   border: 2px solid var(--deck-ink);
   color: var(--deck-ink);
+}
+
+section table tr {
+  background-color: transparent;
+  border: none;
 }
 
 section table th {
@@ -258,18 +269,13 @@ div.callout {
   color: var(--deck-ink);
 }
 
+/* the type reads as a slim colored strip, no label text */
 div.callout::before {
-  content: "note";
+  content: "";
   display: block;
-  font-family: var(--deck-mono);
-  font-size: 14px;
-  font-weight: 600;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
+  height: 8px;
   background: var(--deck-ink);
-  color: var(--deck-paper);
-  padding: 5px 14px;
-  margin: 0 0 8px 0;
+  margin: 0 0 10px 0;
 }
 
 div.callout > p,
@@ -298,13 +304,12 @@ div.callout.info, div.callout.example, div.callout.quote {
   border-color: var(--deck-ink);
 }
 
-/* type accent: the title bar takes the type's color from the diagram palette */
-div.callout.note::before    { content: "note"; }
-div.callout.tip::before     { content: "tip";     background: #1864ab; }
-div.callout.success::before { content: "success"; background: #2b8a3e; }
-div.callout.warning::before { content: "warning"; background: #f08c00; }
-div.callout.danger::before  { content: "danger";  background: #c92a2a; }
-div.callout.bug::before     { content: "bug";     background: #c92a2a; }
+/* type accent: the strip takes the type's color from the diagram palette */
+div.callout.tip::before     { background: #1864ab; }
+div.callout.success::before { background: #2b8a3e; }
+div.callout.warning::before { background: #f08c00; }
+div.callout.danger::before  { background: #c92a2a; }
+div.callout.bug::before     { background: #c92a2a; }
 
 /* ---------- title slide ---------- */
 

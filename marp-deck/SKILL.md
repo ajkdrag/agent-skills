@@ -90,8 +90,12 @@ Gotchas the starter theme already fixes, keep them if you write your own:
   rows. Override at `section table th` specificity or higher.
 - A key-value table with no header text still renders an empty header bar.
   The starter hides it with `section thead tr:not(:has(th:not(:empty)))`.
+- Marp's base css sets `section table { display: block }` for scroll
+  overflow, which detaches the table border from its cells and leaves
+  hairline gaps around the header. Restore `display: table` in the theme.
 - Keep one visual language: no inverted slides mid-deck, callout type shown
-  by coloring the title bar, everything else stays on the same ground color.
+  by a colored strip with no label text (a type word like SUCCESS in the box
+  reads as theme noise), everything else stays on the same ground color.
 
 ## Diagrams
 
